@@ -1,3 +1,2 @@
-git add 0-hello_world
-git commit -m "Add Hello, World script"
-git push
+#!/bin/bash
+echo "Hello, World"
