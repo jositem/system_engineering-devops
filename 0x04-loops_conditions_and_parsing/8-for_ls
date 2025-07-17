@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Lists current directory files, printing only the part after the first dash
+
+for file in *; do
+  # Skip hidden files (already excluded by glob *)
+  # Extract part after first dash using parameter expansion
+  echo "${file#*-}"
+done
