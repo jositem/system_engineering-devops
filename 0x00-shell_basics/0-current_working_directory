@@ -1,3 +1,0 @@
-git add 0-current_working_directory
-git commit -m "Task 0: Print the absolute path of the current working directory"
-git push
