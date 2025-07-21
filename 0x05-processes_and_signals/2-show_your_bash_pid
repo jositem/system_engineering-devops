@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-# A Bash script that displays the PID and process name of all bash processes using pgrep
+# A Bash script that lists the PID and process name of all bash processes using pgrep (no ps command)
 pgrep -a bash | awk '{print $1, $2}'
