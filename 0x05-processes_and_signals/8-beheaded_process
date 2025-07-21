@@ -1,0 +1,21 @@
+#!/#!/bin/bash
+# Kills the 7-highlander process using SIGKILL (signal 9)
+# Find the PID(s) of the process named exactly "7-highlander"
+pid=$(pgrep -x 7-highlander)
+if [ -z "$pid" ]; then
+  echo "No 7-highlander process found."
+  exit 1
+fi
+# Send SIGKILL signal (9) to the process
+kill -9 "$pid"bin/bash
+# Kills the 7-highlander process using SIGKILL (signal 9)
+
+# Find the PID(s) of the process named exactly "7-highlander"
+pid=$(pgrep -x 7-highlander)
+
+if [ -z "$pid" ]; then
+  echo "No 7-highlander process found."
+  exit 1
+fi
+# Send SIGKILL signal (9) to the process
+kill -9 "$pid"
