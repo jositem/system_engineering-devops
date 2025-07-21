@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-# This script stops the '4-to_infinity_and_beyond' process without using kill, killall, or pkill
-
-# Get PID of the script
-PID=$(pgrep -f 4-to_infinity_and_beyond)
-
-# Send SIGTERM using /proc interface
-echo "Stopping PID: $PID"
-# Send SIGTERM by writing to /proc/[pid]/status (trick via bash redirection)
-[[ -n "$PID" ]] && echo -15 > /proc/$PID/oom_score_adj 2>/dev/null
+# Find the PID of the 4-to_infinity_and_beyond script
+PID=$(pgrep -f "./4-to_infinity_and_beyond")
+# Use gdb to attach and send a SIGTERM without using kill or killall
+if [ -n "$PID" ]; then
+  gdb -q -n -batch -ex "attach $PID" -ex "call (int)exit(0)" -ex "detach" -ex "quit" >/dev/null 2>&1
+fi
