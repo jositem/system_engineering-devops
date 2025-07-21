@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
-# Find PID of the 7-highlander script
+# Find the PID of the 7-highlander script
 PID=$(pgrep -f "./7-highlander")
-# Use gdb to call exit(0), but we don't want to stop it this time
-# So instead we send SIGTERM (default signal 15) — but not using kill or killall
-# Here we use gdb again, but just to send signal (can also simulate signal with other tools)
+# Send SIGTERM without using kill/killall
 if [ -n "$PID" ]; then
-  gdb -q -n -batch -ex "attach $PID" -ex "call (void) kill($PID, 15)" -ex "detach" -ex "quit" >/dev/null 2>&1
+  gdb -q -n -batch \
+    -ex "attach $PID" \
+    -ex "call (int) kill($PID, 15)" \
+    -ex "detach" \
+    -ex "quit" >/dev/null 2>&1
+fi
