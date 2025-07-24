@@ -1,6 +1,2 @@
-cd system_engineering-devops/0x05-processes_and_signals
-nano 0-what-is-my-pid    # (paste your script)
-chmod +x 0-what-is-my-pid
-git add 0-what-is-my-pid
-git commit -m "Task 0: Display my PID"
-git push
+#!/bin/bash
+echo $$
